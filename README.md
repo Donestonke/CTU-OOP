@@ -1,7 +1,6 @@
 cons.h:
 
-    // 
-    #ifndef CONS_H_
+    // #ifndef CONS_H_
     #define CONS_H_
     // Cons class declaration
     class Cons{
