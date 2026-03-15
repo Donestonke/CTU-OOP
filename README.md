@@ -1,6 +1,6 @@
 cons.h:
 
-    // #ifndef CONS_H_
+    #ifndef CONS_H_
     #define CONS_H_
     // Cons class declaration
     class Cons{
@@ -41,7 +41,7 @@ cons.cpp:
 
 cons.ex1.cpp:
 
-    // #include <iostream>
+    #include <iostream>
     #include "cons.h"
     using namespace std;
 
