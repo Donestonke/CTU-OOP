@@ -19,7 +19,7 @@ cons.h:
     #endif /* CONS_H_ */
 ```
 cons.cpp:
-
+```C++
     // Implementation of Cons class
     #include "cons.h"
     #include <iostream>
@@ -41,9 +41,9 @@ cons.cpp:
     double Cons::getVar1(){
     return var1;
     }
-
+```
 cons.ex1.cpp:
-
+```C++
     #include <iostream>
     #include "cons.h"
     using namespace std;
@@ -64,11 +64,11 @@ cons.ex1.cpp:
       system("pause");
       return 0;
     }
-
+```
 # Thực hành 2b
 
 Cons2.h: 
-
+```C
     #ifndef CONS2_H_
     #define CONS2_H_
     // cons2 class declaration
@@ -85,9 +85,9 @@ Cons2.h:
         double getVar1(void);
     };
     #endif /* CONS2_H_ */
-
+```
 Cons2.cpp:
-
+```C++
     // Implementation of Cons2 class
     #include "Cons2.h"
     #include <iostream>
@@ -115,9 +115,9 @@ Cons2.cpp:
     double Cons2::getVar1(){
     return var1;
     }
-
+```
 Cons2_ex2.cpp:
-
+```C++
     #include <iostream>
     #include "Cons2.h"
     using namespace std;
@@ -137,3 +137,4 @@ Cons2_ex2.cpp:
     system("pause");
     return 0;
     }
+```
