@@ -1,4 +1,5 @@
 ###Thực Hành 2a
+
 cons.h:
 
     #ifndef CONS_H_
