@@ -1,5 +1,5 @@
 cons.h:
-#ifndef CONS_H_
+[#ifndef CONS_H_
 #define CONS_H_
 
 // Cons class declaration
@@ -15,7 +15,7 @@ class Cons{
         double getVar1(void);
 };
 
-#endif /* CONS_H_ */
+#endif /* CONS_H_ */]
 
 cons.cpp:
 // Implementation of Cons class
