@@ -1,7 +1,7 @@
 # Thực hành 1
 HCN_main.cpp:
-```
-    #include "HCN.h"
+```C++
+#include "HCN.h"
 #include <iostream>
 using namespace std;
 int main(){
@@ -22,7 +22,7 @@ int main(){
    }
 ```
 HCN.cpp:
-```
+```C++
 #include "HCN.h"
 #include <iostream>
 #include <cstdlib>
@@ -57,7 +57,7 @@ double Rectangle::GetChuVi(){
 }
 ```
 HCN.h:
-```
+```C
 #ifndef HCN_H_
 #define HCN_H_
 class Rectangle{
