@@ -636,32 +636,133 @@ SWTime StopWatch::getLap(void) {
 SW_ex.cpp
 ```C++
 #include <iostream>
+#include <iomanip>
+#include <unistd.h>
 #include "StopWatch.h"
 using namespace std;
 
-int main(void) {
+void printTime(SWTime t) {
+    cout << "\r  "
+         << setfill('0') << setw(2) << t.getHours()   << ":"
+         << setfill('0') << setw(2) << t.getMinutes()  << ":"
+         << setfill('0') << setw(2) << t.getSeconds()  << "."
+         << setfill('0') << setw(2) << t.getHundreths()
+         << "  " << flush;
+}
+
+void runStopwatch() {
     StopWatch sw;
     SWTime t;
+    int lapCount = 0;
+    char input;
+
+    cout << "\n  === STOPWATCH ===" << endl;
+    cout << "  [ENTER] Start/Stop  |  [L] Lap  |  [R] Reset  |  [Q] Quit" << endl;
+    cout << endl;
+
+    cin.get();
+    sw.start();
+    cout << "  Started!" << endl;
+
+    while(true) {
+        sw.tick();
+        t = sw.getTime();
+        printTime(t);
+        usleep(10000);
+
+        if(cin.peek() != EOF) {
+            input = cin.get();
+            if(input == '\n') {
+                static bool running = true;
+                running = !running;
+                if(running) sw.start();
+                else        sw.stop();
+            } else if(input == 'l' || input == 'L') {
+                lapCount++;
+                SWTime lap = sw.getLap();
+                cout << "\n  Lap " << lapCount << ": "
+                     << setfill('0') << setw(2) << lap.getHours()    << ":"
+                     << setfill('0') << setw(2) << lap.getMinutes()   << ":"
+                     << setfill('0') << setw(2) << lap.getSeconds()   << "."
+                     << setfill('0') << setw(2) << lap.getHundreths() << endl;
+            } else if(input == 'r' || input == 'R') {
+                sw = StopWatch();
+                sw.start();
+                lapCount = 0;
+                cout << "\n  Reset!" << endl;
+            } else if(input == 'q' || input == 'Q') {
+                break;
+            }
+        }
+    }
+    cout << "\n  Stopped." << endl;
+}
+
+void runCountdown() {
+    StopWatch sw;
+    SWTime t;
+    int totalHundreths;
+    int h, m, s;
+
+    cout << "\n  === COUNTDOWN TIMER ===" << endl;
+    cout << "  Nhap gio (0-11): ";  cin >> h;
+    cout << "  Nhap phut (0-59): "; cin >> m;
+    cout << "  Nhap giay (0-59): "; cin >> s;
+    cin.ignore();
+
+    totalHundreths = h * 360000 + m * 6000 + s * 100;
+
+    if(totalHundreths <= 0) {
+        cout << "  Thoi gian khong hop le!" << endl;
+        return;
+    }
+
+    cout << "\n  [ENTER] de bat dau..." << endl;
+    cin.get();
 
     sw.start();
-    for(int i = 0; i < 100; i++)
+    int elapsed = 0;
+
+    while(elapsed < totalHundreths) {
         sw.tick();
+        elapsed++;
 
-    t = sw.getTime();
-    cout << "Time: "
-         << t.getHours() << ":"
-         << t.getMinutes() << ":"
-         << t.getSeconds() << "."
-         << t.getHundreths() << endl;
+        int remaining = totalHundreths - elapsed;
+        int rh  =  remaining / 360000;
+        int rm  = (remaining % 360000) / 6000;
+        int rs  = (remaining % 6000)   / 100;
+        int rhu =  remaining % 100;
 
-    t = sw.getLap();
-    cout << "Lap: "
-         << t.getHours() << ":"
-         << t.getMinutes() << ":"
-         << t.getSeconds() << "."
-         << t.getHundreths() << endl;
+        cout << "\r  "
+             << setfill('0') << setw(2) << rh  << ":"
+             << setfill('0') << setw(2) << rm  << ":"
+             << setfill('0') << setw(2) << rs  << "."
+             << setfill('0') << setw(2) << rhu
+             << "  " << flush;
 
-    sw.stop();
+        usleep(10000);
+    }
+
+    cout << "\n  HET GIO!" << endl;
+}
+
+int main(void) {
+    int choice;
+
+    cout << "\n  ========================" << endl;
+    cout << "     DONG HO BAM GIO     " << endl;
+    cout << "  ========================" << endl;
+    cout << "  1. Stopwatch" << endl;
+    cout << "  2. Dem nguoc (Countdown)" << endl;
+    cout << "  Lua chon: ";
+    cin >> choice;
+    cin.ignore();
+
+    if(choice == 1)      runStopwatch();
+    else if(choice == 2) runCountdown();
+    else cout << "  Lua chon khong hop le!" << endl;
+
+    cout << "\n  Nhan ENTER de thoat...";
     cin.get();
     return 0;
 }
