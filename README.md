@@ -418,3 +418,73 @@ int main(void) {
     return 0;
 }
 ```
+# Thực hành 4b
+Circle4.h
+```C
+#ifndef CIRCLE4_H_
+#define CIRCLE4_H_
+
+class Circle4 {
+// member data
+private:
+    double r;
+public:
+    static int circle_cnt4;
+// member functions
+public:
+    Circle4();
+    void setRadius(double r);
+    double getRadius(void);
+    static int getCnt(void);
+}; // end Circle4 class
+
+#endif /* CIRCLE4_H_ */
+```
+Circle4.cpp
+```C++
+#include "Circle4.h"
+#define PI 3.14159
+
+Circle4::Circle4() {
+    r = 1;
+    circle_cnt4++;
+    return;
+}
+
+void Circle4::setRadius(double r) {
+    this->r = r;
+    return;
+}
+
+double Circle4::getRadius(void) {
+    return r;
+}
+
+int Circle4::getCnt(void) {
+    return circle_cnt4;
+}
+```
+Circle4_ex.cpp: 
+```C++
+#include <iostream>
+#include "Circle4.h"
+using namespace std;
+
+int Circle4::circle_cnt4 = 0;
+
+int main(void) {
+    Circle4 obj1;
+    cout << "Current num circles: " << obj1.circle_cnt4 << endl;
+    cout << "Current num circles using static fn: " << Circle4::getCnt() << endl;
+
+    Circle4 obj2;
+    cout << "Current num circles: " << obj2.circle_cnt4 << endl;
+
+    Circle4 obj3;
+    cout << "Current num circles: " << obj3.circle_cnt4 << endl;
+    cout << "Current num circles using static fn: " << Circle4::getCnt() << endl;
+
+    cin.get();
+    return 0;
+}
+```
