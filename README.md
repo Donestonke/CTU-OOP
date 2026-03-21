@@ -2,69 +2,7 @@
 
 [Bài thực hành 2a](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202) - [2b](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202b) - [2c](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202c)
 
-# Thực hành 3
-Circle2.h:
-```C
-class Circle2 {
-    // member data
-    private:
-        double r;
-    // member functions
-    public:
-        Circle2();
-        Circle2(double r);
-        void setRadius(double r);
-        double getRadius(void);
-        double calcArea(void);
-        double calcCirc(void);
-        void printPointer(void);
-}; // end Circle2 class
-```
-Circle2.cpp:
-```C++
-#include <iostream>
-#include "Circle2.h"
-using namespace std;
-
-#define PI 3.14159
-
-Circle2::Circle2() {
-    r = 1;
-    return;
-}
-
-Circle2::Circle2(double r){
-    this->r = r;
-    return;
-}
-
-void Circle2::setRadius(double r){
-    this->r = r;
-    return;
-}
-
-void Circle2::printPointer(void){
-    cout << "This objects -this- pointer value is " << this << endl;
-    cout << "this objects member variable r is " << this->r << endl;
-}
-```
-This_ex1.cpp
-```C++
-#include <iostream>
-#include "Circle2.h"
-using namespace std;
-
-int main(void){
-    // Create an object
-    Circle2 obj1;
-
-    obj1.setRadius(5);
-    obj1.printPointer();
-
-    system("pause");
-    return 0;
-}
-```
+[Bài thực hành 3](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%203)
 # Thực hành 4a
 Circle3.h: 
 ```C
