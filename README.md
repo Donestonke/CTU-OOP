@@ -633,7 +633,40 @@ SWTime StopWatch::getLap(void) {
     return tmp;
 }
 ```
-SW_ex.cpp
+SW_ex.cpp 
+```C++
+#include <iostream>
+#include "StopWatch.h"
+using namespace std;
+
+int main(void) {
+    StopWatch sw;
+    SWTime t;
+
+    sw.start();
+    for(int i = 0; i < 100; i++)
+        sw.tick();
+
+    t = sw.getTime();
+    cout << "Time: "
+         << t.getHours() << ":"
+         << t.getMinutes() << ":"
+         << t.getSeconds() << "."
+         << t.getHundreths() << endl;
+
+    t = sw.getLap();
+    cout << "Lap: "
+         << t.getHours() << ":"
+         << t.getMinutes() << ":"
+         << t.getSeconds() << "."
+         << t.getHundreths() << endl;
+
+    sw.stop();
+    cin.get();
+    return 0;
+}
+```
+SW_ex.cpp (cai tien - 1)
 ```C++
 #include <iostream>
 #include <iomanip>
@@ -762,6 +795,180 @@ int main(void) {
     else if(choice == 2) runCountdown();
     else cout << "  Lua chon khong hop le!" << endl;
 
+    cout << "\n  Nhan ENTER de thoat...";
+    cin.get();
+    return 0;
+}
+```
+SW_ex.cpp (cai tien 2)
+```C++
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+#include <termios.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include "StopWatch.h"
+using namespace std;
+
+struct termios orig_termios;
+
+void setRawMode() {
+    struct termios raw;
+    tcgetattr(STDIN_FILENO, &orig_termios);
+    raw = orig_termios;
+    raw.c_lflag &= ~(ICANON | ECHO);
+    raw.c_cc[VMIN] = 0;
+    raw.c_cc[VTIME] = 0;
+    tcsetattr(STDIN_FILENO, TCSANOW, &raw);
+}
+
+void restoreMode() {
+    tcsetattr(STDIN_FILENO, TCSANOW, &orig_termios);
+}
+
+int kbhit() {
+    char ch;
+    return read(STDIN_FILENO, &ch, 1) == 1 ? ch : 0;
+}
+
+void printTime(SWTime t) {
+    cout << "\r  "
+         << setfill('0') << setw(2) << t.getHours()    << ":"
+         << setfill('0') << setw(2) << t.getMinutes()   << ":"
+         << setfill('0') << setw(2) << t.getSeconds()   << "."
+         << setfill('0') << setw(2) << t.getHundreths()
+         << "  " << flush;
+}
+
+void runStopwatch() {
+    StopWatch sw;
+    SWTime t;
+    int lapCount = 0;
+    bool running = false;
+    char input;
+    clock_t lastTick = clock();
+
+    cout << "\n  === STOPWATCH ===" << endl;
+    cout << "  [ENTER] Start/Stop  |  [L] Lap  |  [R] Reset  |  [Q] Quit\n" << endl;
+
+    setRawMode();
+
+    while(true) {
+        clock_t now = clock();
+        if((double)(now - lastTick) / CLOCKS_PER_SEC >= 0.01) {
+            if(running) {
+                sw.tick();
+                t = sw.getTime();
+                printTime(t);
+            }
+            lastTick = now;
+        }
+
+        input = kbhit();
+        if(input) {
+            if(input == '\n' || input == ' ') {
+                running = !running;
+                if(running) sw.start();
+                else        sw.stop();
+            } else if(input == 'l' || input == 'L') {
+                lapCount++;
+                SWTime lap = sw.getLap();
+                cout << "\n  Lap " << lapCount << ": "
+                     << setfill('0') << setw(2) << lap.getHours()    << ":"
+                     << setfill('0') << setw(2) << lap.getMinutes()   << ":"
+                     << setfill('0') << setw(2) << lap.getSeconds()   << "."
+                     << setfill('0') << setw(2) << lap.getHundreths() << endl;
+            } else if(input == 'r' || input == 'R') {
+                sw = StopWatch();
+                running = false;
+                lapCount = 0;
+                cout << "\n  Reset!" << endl;
+            } else if(input == 'q' || input == 'Q') {
+                break;
+            }
+        }
+    }
+
+    restoreMode();
+    cout << "\n  Stopped." << endl;
+}
+
+void runCountdown() {
+    StopWatch sw;
+    int h, m, s;
+    int totalHundreths, elapsed = 0;
+    char input;
+    clock_t lastTick = clock();
+
+    restoreMode();
+    cout << "\n  === COUNTDOWN TIMER ===" << endl;
+    cout << "  Nhap gio (0-11): ";  cin >> h;
+    cout << "  Nhap phut (0-59): "; cin >> m;
+    cout << "  Nhap giay (0-59): "; cin >> s;
+    cin.ignore();
+
+    totalHundreths = h * 360000 + m * 6000 + s * 100;
+    if(totalHundreths <= 0) {
+        cout << "  Thoi gian khong hop le!" << endl;
+        return;
+    }
+
+    cout << "\n  [ENTER] de bat dau  |  [Q] Quit\n" << endl;
+    cin.get();
+
+    setRawMode();
+    sw.start();
+
+    while(elapsed < totalHundreths) {
+        clock_t now = clock();
+        if((double)(now - lastTick) / CLOCKS_PER_SEC >= 0.01) {
+            sw.tick();
+            elapsed++;
+            lastTick = now;
+
+            int remaining = totalHundreths - elapsed;
+            int rh  =  remaining / 360000;
+            int rm  = (remaining % 360000) / 6000;
+            int rs  = (remaining % 6000)   / 100;
+            int rhu =  remaining % 100;
+
+            cout << "\r  "
+                 << setfill('0') << setw(2) << rh  << ":"
+                 << setfill('0') << setw(2) << rm  << ":"
+                 << setfill('0') << setw(2) << rs  << "."
+                 << setfill('0') << setw(2) << rhu
+                 << "  " << flush;
+        }
+
+        input = kbhit();
+        if(input == 'q' || input == 'Q') break;
+    }
+
+    restoreMode();
+    if(elapsed >= totalHundreths)
+        cout << "\n  HET GIO!" << endl;
+    else
+        cout << "\n  Dung lai." << endl;
+}
+
+int main(void) {
+    int choice;
+
+    cout << "\n  ========================" << endl;
+    cout << "     DONG HO BAM GIO     " << endl;
+    cout << "  ========================" << endl;
+    cout << "  1. Stopwatch" << endl;
+    cout << "  2. Dem nguoc (Countdown)" << endl;
+    cout << "  Lua chon: ";
+    cin >> choice;
+    cin.ignore();
+
+    if(choice == 1)      runStopwatch();
+    else if(choice == 2) runCountdown();
+    else cout << "  Lua chon khong hop le!" << endl;
+
+    restoreMode();
     cout << "\n  Nhan ENTER de thoat...";
     cin.get();
     return 0;
