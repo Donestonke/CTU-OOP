@@ -1,4 +1,4 @@
-[[Bài thực hành 1] ([BaiThucHanh/Bai1](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai1))](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai1)
+https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai1
 # Thực Hành 2a
 
 cons.h:
