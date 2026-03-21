@@ -488,3 +488,181 @@ int main(void) {
     return 0;
 }
 ```
+# Thực Hành 5
+SWtime.h:
+```C
+#ifndef SWTIME_H_
+#define SWTIME_H_
+
+class SWTime {
+// member data
+private:
+    int hundreths;
+    int seconds;
+    int minutes;
+    int hours;
+// member functions
+public:
+    SWTime();
+    void clearTime(void);
+    void incTime(int h, int m, int s, int hu);
+    int getHours();
+    int getMinutes();
+    int getSeconds();
+    int getHundreths();
+}; // end SWTime class
+
+#endif /* SWTIME_H_ */
+```
+SWtime.cpp:
+```C++
+#include "SWTime.h"
+
+SWTime::SWTime(void) {
+    clearTime();
+}
+
+void SWTime::clearTime(void) {
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+    hundreths = 0;
+    return;
+}
+
+void SWTime::incTime(int h, int m, int s, int hu) {
+    hundreths += hu;
+    if(hundreths > 99) {
+        seconds += hundreths / 100;
+        hundreths %= 100;
+    }
+    seconds += s;
+    if(seconds > 59) {
+        minutes += seconds / 60;
+        seconds %= 60;
+    }
+    minutes += m;
+    if(minutes > 59) {
+        hours += minutes / 60;
+        minutes %= 60;
+    }
+    hours += h;
+    if(hours > 11) {
+        hours = 0;
+    }
+    return;
+}
+
+int SWTime::getHours(void) {
+    return hours;
+}
+
+int SWTime::getMinutes(void) {
+    return minutes;
+}
+
+int SWTime::getSeconds(void) {
+    return seconds;
+}
+
+int SWTime::getHundreths(void) {
+    return hundreths;
+}
+```
+StopWatch.h:
+```C
+#ifndef STOPWATCH_H_
+#define STOPWATCH_H_
+#include "SWTime.h"
+
+class StopWatch {
+// member data
+private:
+    SWTime clock;
+    SWTime split;
+    bool running;
+// member functions
+public:
+    StopWatch();
+    void start(void);
+    void stop(void);
+    void tick(void);
+    SWTime getTime(void);
+    SWTime getLap(void);
+}; // end StopWatch class
+
+#endif /* STOPWATCH_H_ */
+```
+StopWatch.cpp:
+```C++
+#include "StopWatch.h"
+
+StopWatch::StopWatch(void) {
+    running = false;
+    clock.clearTime();
+    split.clearTime();
+    return;
+}
+
+void StopWatch::start(void) {
+    running = true;
+    return;
+}
+
+void StopWatch::stop(void) {
+    running = false;
+    return;
+}
+
+void StopWatch::tick(void) {
+    if(running) {
+        clock.incTime(0, 0, 0, 1);
+        split.incTime(0, 0, 0, 1);
+    }
+    return;
+}
+
+SWTime StopWatch::getTime(void) {
+    return clock;
+}
+
+SWTime StopWatch::getLap(void) {
+    SWTime tmp;
+    tmp = split;
+    split.clearTime();
+    return tmp;
+}
+```
+SW_ex.cpp
+```C++
+#include <iostream>
+#include "StopWatch.h"
+using namespace std;
+
+int main(void) {
+    StopWatch sw;
+    SWTime t;
+
+    sw.start();
+    for(int i = 0; i < 100; i++)
+        sw.tick();
+
+    t = sw.getTime();
+    cout << "Time: "
+         << t.getHours() << ":"
+         << t.getMinutes() << ":"
+         << t.getSeconds() << "."
+         << t.getHundreths() << endl;
+
+    t = sw.getLap();
+    cout << "Lap: "
+         << t.getHours() << ":"
+         << t.getMinutes() << ":"
+         << t.getSeconds() << "."
+         << t.getHundreths() << endl;
+
+    sw.stop();
+    cin.get();
+    return 0;
+}
+```
