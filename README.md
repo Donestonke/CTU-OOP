@@ -4,77 +4,7 @@
 
 [Bài thực hành 2b](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202b)
 
-# Thực hành bài 2c
-
-Des.h:
-```C
-#ifndef DES_H_
-#define DES_H_
-// Des class declaration
-class Des{
-    // member data
-    private:
-        double var1;
-    // member functions
-    public:
-        Des(void);// constructor
-        ~Des(void);// destructor
-        void setVar1(double v1);
-        double getVar1(void);
-};
-
-#endif /* DES_H_ */
-```
-Des.cpp:
-```C++
-// Implementation of Des class
-#include "Des.h"
-#include <iostream>
-#include <cstdlib>
-using namespace std;
-// Default Constructor
-Des::Des(void){
-    var1 = 0.0;
-    cout << "Created object of type Des\n";
-}
-// Default Destructor
-Des::~Des(void){
-    // nothing to do here
-    cout << "Object of type Des destroyed\n";
-}
-// setVar1 - sets the var1 variable
-void Des::setVar1(double v1){
-    var1 = v1;
-}
-// getVar1 - gets the var1 member variable
-double Des::getVar1(){
-    return var1;
-}
-```
-Des_Ex.cpp: 
-```C++
-#include <iostream>
-#include "Des.h"
-using namespace std;
-
-int main(void){
-    double foo;
-
-    // Create a few objects
-    Des obj1;
-    foo = obj1.getVar1();
-    cout << foo << endl;
-    cout << "-------------------\n";
-    for(int i=0; i<1; i++){
-        Des obj2;
-        cout << obj2.getVar1() << endl;
-    }
-    cout << "\nnot to the end yet" << endl;
-    cout << "-------------------\n";
-    system("pause");
-    return 0;
-}
-```
+[Bài thực hành 2c](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202c)
 # Thực hành 3
 Circle2.h:
 ```C
