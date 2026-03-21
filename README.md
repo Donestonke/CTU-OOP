@@ -308,15 +308,22 @@ class Circle2 {
 ```
 Circle2.cpp:
 ```C++
+#include <iostream>
+#include "Circle2.h"
+using namespace std;
+
 #define PI 3.14159
+
 Circle2::Circle2() {
     r = 1;
     return;
 }
+
 Circle2::Circle2(double r){
     this->r = r;
     return;
 }
+
 void Circle2::setRadius(double r){
     this->r = r;
     return;
