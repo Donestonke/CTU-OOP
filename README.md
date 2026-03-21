@@ -1,10 +1,7 @@
 [Bài thực hành 1](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai1)
 
-[Bài thực hành 2a](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202)
+[Bài thực hành 2a](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202) - [2b](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202b) - [2c](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202c)
 
-[Bài thực hành 2b](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202b)
-
-[Bài thực hành 2c](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202c)
 # Thực hành 3
 Circle2.h:
 ```C
