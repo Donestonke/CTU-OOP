@@ -1,3 +1,81 @@
+# Thực hành 1
+HCN_main.cpp:
+```
+    #include "HCN.h"
+#include <iostream>
+using namespace std;
+int main(){
+       Rectangle rect1;
+       double dai, rong;
+       cout<<"nhap gia tri cho hinh chu nhat";
+       cout<<"Chieu Dai";
+       cin>>dai;
+       rect1.Datcd(dai);
+       cout<<"Chieu Rong";
+       cin>>rong;
+       rect1.Datcr(rong);
+       cout<<"Chieu Dai"<<rect1.GetDai()<<endl;
+       cout<<"Chieu Rong"<<rect1.GetRong()<<endl;
+       cout<<"Dien Tich"<<rect1.GetDienTich()<<endl;
+       cout<<"Chu Vi"<<rect1.GetChuVi()<<endl;
+       return 0;
+   }
+```
+HCN.cpp:
+```
+#include "HCN.h"
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+void Rectangle::Datcd (double Dai){
+    if(Dai>0){
+        ChieuDai=Dai;
+}else{
+    cout<<"gia tri khong hop le";
+    exit(EXIT_FAILURE);
+}
+}
+void Rectangle::Datcr (double Rong){
+    if(Rong>0){
+        ChieuRong=Rong;
+}else{
+    cout<<"gia tri khong hop le";
+    exit(EXIT_FAILURE);
+}
+}
+double Rectangle::GetDai(){
+    return ChieuDai;
+}
+double Rectangle::GetRong(){
+    return ChieuRong;
+}
+double Rectangle::GetDienTich(){
+    return ChieuDai*ChieuRong;
+}
+double Rectangle::GetChuVi(){
+    return 2*(ChieuDai+ChieuRong);
+}
+```
+HCN.h:
+```
+#ifndef HCN_H_
+#define HCN_H_
+class Rectangle{
+private :
+        double ChieuDai;
+        double ChieuRong;
+
+public:
+        void Datcd(double Dai);
+        void Datcr(double Rong);
+        double GetDai(void);
+        double GetRong(void);
+        double GetChuVi(void);
+        double GetDienTich(void);
+
+};
+#endif
+```
 # Thực Hành 2a
 
 cons.h:
