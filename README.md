@@ -7,6 +7,8 @@
 [Bài thực hành 6](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%206)
 
 [Bài thực hành 7a](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%207)
+
+[Bài thực hành 8a](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%208a) - [8b]()
 # Thực hành 4a
 Circle3.h:
 ```C
