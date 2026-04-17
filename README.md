@@ -17,3 +17,5 @@
 [Bài thực hành 9a](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%209a) - [9b](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%209b) - [9c](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%209c)
 
 [Bài thực hành 10](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%2010)
+
+Tải hết file xong để tên thư mực là "File code" đại đi, thầy cũng chả xem đâu
