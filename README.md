@@ -22,4 +22,4 @@ Tải hết file trong [BaiThucHanh](https://github.com/Donestonke/CTU-OOP/tree/
 
 Mấy folder còn lại là thư viện dùng để code đồ án cuối kì.
 
-Muốn điểm cao thì giữa kì đầu tư vô file Word nhiều tí. Cuối kì nếu không có gì thay đổi thì không cần làm file Word, làm PPT in ra thầy xem.
+Muốn điểm giữa kì cao thì đầu tư vô file Word nhiều tí. Cuối kì nếu không có gì thay đổi thì không cần làm file Word, làm PPT in ra thầy xem.
