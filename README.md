@@ -1,3 +1,5 @@
+*Note: Đây là Hướng đối tượng (OOP) của trường Bách Khoa ngành Thiết kế vi mạch
+
 [Bài thực hành 1](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai1)
 
 [Bài thực hành 2a](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202) - [2b](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202b) - [2c](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%202c)
