@@ -18,7 +18,7 @@
 
 [Bài thực hành 10](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%2010)
 
-Tải hết file trong [BaiThucHanh](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh) sau đó để tên thư mực là "File code" đại đi, thầy cũng chả xem đâu.
+Tải hết file trong [BaiThucHanh](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh) sau đó để tên thư mực là "File code" đại đi, thầy cũng chả xem đâu. (Giữa kì)
 
 Mấy folder còn lại là thư viện dùng để code đồ án cuối kì.
 
