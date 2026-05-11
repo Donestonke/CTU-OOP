@@ -18,4 +18,8 @@
 
 [Bài thực hành 10](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh/Bai%2010)
 
-Tải hết file trong [BaiThucHanh](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh) sau đó để tên thư mực là "File code" đại đi, thầy cũng chả xem đâu. Muốn điểm cao thì đầu tư làm file Word nhiều tí
+Tải hết file trong [BaiThucHanh](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh) sau đó để tên thư mực là "File code" đại đi, thầy cũng chả xem đâu.
+
+Mấy folder còn lại là thư viện dùng để code đồ án cuối kì.
+
+Muốn điểm cao thì giữa kì đầu tư vô file Word nhiều tí. Cuối kì nếu không có gì thay đổi thì không cần làm file Word, làm PPT in ra thầy xem.
