@@ -20,6 +20,6 @@
 
 Tải hết file trong [BaiThucHanh](https://github.com/Donestonke/CTU-OOP/tree/main/BaiThucHanh) sau đó để tên thư mực là "File code" đại đi, thầy cũng chả xem đâu. (Giữa kì)
 
-Mấy folder còn lại là thư viện dùng để code đồ án cuối kì.
+[File này](https://github.com/Donestonke/CTU-OOP/blob/main/test_gate.cpp) là thư viện để code đồ án cuối kì
 
 Muốn điểm giữa kì cao thì đầu tư vô file Word nhiều tí. Cuối kì nếu không có gì thay đổi thì không cần làm file Word, làm PPT in ra thầy xem.
